@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Virtual</title>
+    <link rel="stylesheet" href="/front_end/styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <img src="img/logo-biblioteca.png" alt="Logo" class="logo">
+                <a class="brand-name">Biblioteca Virtual</a>
+            </div>
+            <ul class="navbar-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="libros.html">Libros</a></li>
+                <li><a href="usuarios.html">Usuarios</a></li>
+                <li><a href="prestamos.html">Préstamos</a></li>
+                <li><a href="multas.html">Multas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="libros">
+            <div class="header">
+                <h2>Gestión de Libros</h2>
+                <a href="listaLibros.html">Lista de Libros</a>
+            </div>
+            <form id="form-libros">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" onfocusout="validarTitulo(this);" >
+
+                <label for="autor">Autor:</label>
+                <input type="text" id="autor" name="autor" onfocusout="validarAutor(this);">
+
+                <label for="isbn">ISBN:</label>
+                <input type="text" id="isbn" name="isbn" onfocusout="validarIsbn(this);" inputmode="numeric" pattern="\d*">
+
+                <label for="genero">Género:</label>
+                <input type="text" id="genero" name="genero" onfocusout="validarGenero(this);">
+
+                <label for="ejemplares">Número de ejemplares disponibles:</label>
+                <input type="number" id="ejemplares" name="ejemplares" onfocusout="validarDisponibles(this);">
+
+                <label for="ocupados">Número de ejemplares ocupados:</label>
+                <input type="number" id="ocupados" name="ocupados" onfocusout="validarOcupados(this);">
+
+                <button type="submit" onclick="registrarLibro()">Añadir Libro</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Biblioteca</p>
+    </footer>
+    <script src="/front_end/js/libros.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,226 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: hsl(208, 100%, 50%);
+    color: #fff;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 200px;
+    height: 100px;
+    margin-right: 1em;
+}
+
+.brand-name {
+    color: #fff;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+.navbar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navbar-links li {
+    margin-left: 1em;
+}
+
+.navbar-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-links a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 2em;
+}
+
+section {
+    background-color: #fff;
+    margin-bottom: 2em;
+    padding: 1em;
+    padding-right: 2em;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+form label {
+    display: block;
+    margin: 0.5em 0 0.2em;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+form button {
+    padding: 0.7em 1.5em;
+    background-color: hsl(208, 100%, 50%);
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #555;
+}
+
+footer {
+    background-color: hsl(208, 100%, 50%);
+    color: #fff;
+    text-align: center;
+    padding: 1%;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+
+/*estilos de los demas filtros*/
+.filter-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.filter-group {
+    flex:0 23%; /* Establee la flexibilidad de los elementos de grupo de filtro */
+    margin-bottom: 10px; /* Establece un margen inferior */
+}
+
+/* Estilos para los elementos de filtro */
+.filter-group label {
+    font-size: bold; /* Tamaño del texto */
+    display: block;
+    margin-bottom: 5px;
+}
+
+.filter-group .input-container{
+    display: flex;
+}
+.filter-group .filter-input {
+    width: 100%; /* Ancho del campo de entrada */
+    padding: 7px; /* Relleno */
+    border: 1px solid #ccc; /* Grosor del borde */
+    border-radius: 7px; /* Radio del borde */
+}
+
+/*botones de los filtros*/
+.botones-filtro {
+    text-align: right; /* Alinea los botones a la derecha */
+    margin-bottom: 20px;
+}
+
+.botones-filtro button {
+    padding: 5px 10px;
+    font-size: 14px;/*tamaño de la letra*/
+    margin-right: 10px;
+    background-color: #007bff; /* Color azul para el botón "Aplicar Filtro" */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.botones-filtro button#limpiar-filtro {
+    background-color: #686767; /* Color gris para el botón "Limpiar Filtro" */
+}
+
+.botones-filtro button:hover {
+    background-color: #0056b3;
+}
+
+.botones-filtro button#limpiar-filtro:hover {
+    background-color: #999; /* Cambia el color gris al hacer hover */
+}
+
+/* Estilo para el contenedor de la tabla */
+.table-container {
+    overflow-x: auto;
+}
+
+/* Estilo para la tabla */
+.table {
+    width:100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+/* Estilo para las celdas del encabezado */
+.table th {
+    background-color: #e3e1e1;
+    border: 1px solid #ffffff;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Estilo para las celdas del cuerpo */
+.table td {
+    border: 1px solid #ffffff;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Estilo para las filas pares */
+.table tbody tr:nth-child(even) {
+    background-color: #e3e1e1;
+}
+
+/* Estilo para las filas impares */
+.table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Estilos para las acciones */
+.accion {
+    cursor: pointer;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+/*estilos para las acciones de la lista*/
+.accion.editar {
+    color: green; /* Color verde para editar */
+}
+
+.accion.eliminar {
+    color: red; /* Color rojo para eliminar */
+}
+
+.accion.desactivar {
+    color: blue; /* Color azul para desactivar */
+}

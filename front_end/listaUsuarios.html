@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Virtual</title>
+    <link rel="stylesheet" href="/front_end/styles/style.css">
+    <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <img src="img/logo-biblioteca.png" alt="Logo" class="logo">
+                <a class="brand-name">Biblioteca Virtual</a>
+            </div>
+            <ul class="navbar-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="libros.html">Libros</a></li>
+                <li><a href="usuarios.html">Usuarios</a></li>
+                <li><a href="prestamos.html">Préstamos</a></li>
+                <li><a href="multas.html">Multas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="libros">
+            <div class="header">
+                <h2>Lista de Usuarios</h2>
+                <a href="usuarios.html">Resgistro de Usuarios</a>
+            </div>
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="filter-name">Filtrar:</label>
+                    <div class="input-container">
+                        <input type="text" id="filter-name" class="filter-input"
+                            placeholder="Ingrese el nombre, correo" />
+                    </div>
+                </div>
+            </div>
+            <div class="botones-filtro">
+                <button id="aplicar-filtro">Aplicar Filtro</button>
+                <button id="limpiar-filtro">Limpiar Filtro</button>
+            </div>
+
+            <!--Tabla de Registro -->
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id Usuario</th>
+                            <th>Nombre</th>
+                            <th>Direccion</th>
+                            <th>Correo</th>
+                            <th>Tipo de Usuario</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTablaCliente">
+                        <tr>
+                            <td>1</td>
+                            <td>DNI</td>
+                            <td>12345678</td>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>
+                                <span class="accion editar" title="Editar">
+                                    <i class="fas fa-edit"></i>
+                                </span>
+                                <span class="accion eliminar" title="Eliminar">
+                                    <i class="fas fa-trash-alt"></i>
+                                </span>
+                                <span class="accion desactivar" title="Mostrar Detalles">
+                                    <i class="fas fa-eye"></i>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>DNI</td>
+                            <td>12345678</td>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>
+                                <span class="accion editar" title="Editar">
+                                    <i class="fas fa-edit"></i>
+                                </span>
+                                <span class="accion eliminar" title="Eliminar">
+                                    <i class="fas fa-trash-alt"></i>
+                                </span>
+                                <span class="accion desactivar" title="Mostrar Detalles">
+                                    <i class="fas fa-eye"></i>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Biblioteca</p>
+    </footer>
+    <script src="/front_end/js/validaciones.js"></script>
+</body>
+
+</html>

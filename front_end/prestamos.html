@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Virtual</title>
+    <link rel="stylesheet" href="/front_end/styles/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <img src="img/logo-biblioteca.png" alt="Logo" class="logo">
+                <a class="brand-name">Biblioteca Virtual</a>
+            </div>
+            <ul class="navbar-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="libros.html">Libros</a></li>
+                <li><a href="usuarios.html">Usuarios</a></li>
+                <li><a href="prestamos.html">Préstamos</a></li>
+                <li><a href="multas.html">Multas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Sección para Préstamos -->
+        <section id="prestamos">
+            <div class="header">
+                <h2>Gestión de Préstamos</h2>
+                <a href="listaPrestamo.html">Lista de Préstamos</a>
+            </div>
+            <form id="form-prestamos">
+                <label for="fecha-prestamo">Fecha de Préstamo:</label>
+                <input type="date" id="fecha-prestamo" name="fecha-prestamo" required>
+
+                <label for="fecha-devolucion">Fecha de Devolución:</label>
+                <input type="date" id="fecha-devolucion" name="fecha-devolucion" required>
+
+                <label for="usuario-prestamo">Usuario:</label>
+                <input type="text" id="usuario-prestamo" name="usuario-prestamo" required>
+
+                <label for="libro-prestado">Libro:</label>
+                <input type="text" id="libro-prestado" name="libro-prestado" required>
+
+                <label for="estado">Estado:</label>
+                <select id="estado" name="estado" required>
+                    <option value="prestamo">Préstamo</option>
+                    <option value="entregado">Entregado</option>
+                    <option value="cancelado">Cancelado</option>
+                </select>
+
+                <button type="submit">Registrar Préstamo</button> 
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Biblioteca</p>
+    </footer>
+    <script src="/front_end/js/validaciones.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+body {
+    font-family:'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: hsl(208, 100%, 50%);
+    color: #fff;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 200px;
+    height: 100px;
+    margin-right: 1em;
+}
+
+.brand-name {
+    color: #fff;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+.navbar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navbar-links li {
+    margin-left: 1em;
+}
+
+.navbar-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-links a:hover {
+    text-decoration: underline;
+}
+
+.hero {
+    background: url('/front_end/img/biblioteca04.avif') no-repeat center center/cover;
+    color: #ffffff;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.section {
+    padding: 4%;
+    background-color: #fff;
+    margin: 1em 0;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+.book-collection {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.book-item {
+    width: 30%;
+    margin: 1em 0;
+    text-align: center;
+}
+
+.book-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: hsl(208, 100%, 50%);
+    color: #fff;
+    text-align: center;
+    padding: 1%;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
