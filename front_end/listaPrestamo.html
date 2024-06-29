@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca Virtual</title>
     <link rel="stylesheet" href="/front_end/styles/style.css">
+    <link rel="stylesheet" href="/front_end/styles/modal.css">
     <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
-<body>
+<body onload="listarPrestamo();">
     <header>
         <nav class="navbar">
             <div class="navbar-brand">
@@ -26,7 +28,7 @@
         </nav>
     </header>
     <main>
-        <section id="libros">
+        <section id="prestamo">
             <div class="header">
                 <h2>Lista de Préstamos</h2>
                 <a href="prestamos.html">Registro de Préstamos</a>
@@ -45,16 +47,16 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody id="cuerpoTablaCliente">
+                    <tbody id="cuerpoTablaPrestamo">
                         <tr>
-                            <td>1</td>
+                            <!--  <td>1</td>
                             <td>DNI</td>
                             <td>12345678</td>
                             <td>John</td>
                             <td>Doe</td>
                             <td>123456789</td>
                             <td>
-                                <span class="accion editar" title="Editar">
+                              <span class="accion editar" title="Editar">
                                     <i class="fas fa-edit"></i>
                                 </span>
                                 <span class="accion eliminar" title="Eliminar">
@@ -83,7 +85,7 @@
                                     <i class="fas fa-eye"></i>
                                 </span>
                             </td>
-                        </tr>
+                        </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -92,7 +94,46 @@
     <footer>
         <p>© 2024 Biblioteca</p>
     </footer>
-    <script src="/front_end/js/validaciones.js"></script>
+
+    <!-- Modal for editing book details -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Editar Prestamo</h2>
+            <form id="editBookForm" onsubmit="updatePrestamo(event)">
+                <input type="hidden" id="editBookId" name="editBookId">
+                <div>
+                    <label for="editFechaPrestamo">Fecha de Devolución:</label>
+                    <input type="date" id="editFechaPrestamo" class="form-control" name="editFechaDevolucion" required>
+                </div>
+                <div>
+                    <label for="editFechaDevolucion">Fecha de Devolucion:</label>
+                    <input type="date" id="editFechaDevolucion" class="form-control" name="editFechaDevolucion" required>
+                </div>
+                <div>
+                    <label for="editUsuario">Usuario:</label>
+                    <input type="text" id="editUsuario" name="editUsuario" required>
+                </div>
+                <div>
+                    <label for="editLibro">Libro:</label>
+                    <input type="text" id="editLibro"  name="editLibro" required>
+                </div>
+                <div>
+                    <label for="editEstado">Estado:</label>
+                    <select id="editEstado" class="form-control" name="editEstado" required>                        <option value="prestamo">Préstamo</option>
+                        <option value="entregado">Entregado</option>
+                        <option value="cancelado">Cancelado</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+            </form>
+        </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/front_end/js/prestamo.js"></script>
 </body>
 
 </html>

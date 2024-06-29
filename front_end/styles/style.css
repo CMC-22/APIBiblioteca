@@ -205,22 +205,19 @@ footer {
     background-color: #ffffff;
 }
 
-/* Estilos para las acciones */
+/* Estilos para las acciones 
 .accion {
     cursor: pointer;
     margin-right: 5px;
     font-size: 14px;
 }
 
-/*estilos para las acciones de la lista*/
-.accion.editar {
-    color: green; /* Color verde para editar */
+.btn-eliminar {
+    background-color: #dc3545;
+    color: white;
 }
 
-.accion.eliminar {
-    color: red; /* Color rojo para eliminar */
-}
-
-.accion.desactivar {
-    color: blue; /* Color azul para desactivar */
-}
+.btn-editar {
+    background-color: #28a745; 
+    color: white;
+}*/

@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca Virtual</title>
     <link rel="stylesheet" href="/front_end/styles/style.css">
+    <link rel="stylesheet" href="/front_end/styles/modal.css">
     <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body onload="listarLibro();">
@@ -35,15 +37,15 @@
                 <div class="filter-group">
                     <label for="filter-name">Filtrar:</label>
                     <div class="input-container">
-                        <input type="text" id="filter-name" class="filter-input"
+                        <input type="text" id="filtrarLibro" class="filter-input"
                             placeholder="Ingrese el titulo, autor, genero, ISBN" />
                     </div>
                 </div>
             </div>
             </div>
             <div class="botones-filtro">
-                <button id="aplicar-filtro">Aplicar Filtro</button>
-                <button id="limpiar-filtro">Limpiar Filtro</button>
+                <button id="aplicar-filtro" onclick="filtrarLibro()">Aplicar Filtro</button>
+                <button id="limpiar-filtro" onclick="limpiarFiltro()">Limpiar Filtro</button>
             </div>
 
             <!--Tabla de Registro -->
@@ -61,7 +63,7 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody id="cuerpoTablaLibros">
+                    <tbody id="cuerpoTablaLibro">
                         <!--<tr>
                             <td>1</td>
                             <td>DNI</td>
@@ -110,7 +112,45 @@
     <footer>
         <p>© 2024 Biblioteca</p>
     </footer>
+
+
+        <!-- Modal for editing book details -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Editar Libro</h2>
+                <form id="editBookForm" onsubmit="updateLibro(event)">
+                    <input type="hidden" id="editBookId">
+                    <div>
+                        <label for="editTitulo">Título:</label>
+                        <input type="text" id="editTitulo" required>
+                    </div>
+                    <div>
+                        <label for="editAutor">Autor:</label>
+                        <input type="text" id="editAutor" required>
+                    </div>
+                    <div>
+                        <label for="editGenero">Género:</label>
+                        <input type="text" id="editGenero" required>
+                    </div>
+                    <div>
+                        <label for="editIsbn">ISBN:</label>
+                        <input type="text" id="editIsbn" required>
+                    </div>
+                    <div>
+                        <label for="editEjemplaresDisponibles">Ejemplares Disponibles:</label>
+                        <input type="number" id="editEjemplaresDisponibles" required>
+                    </div>
+                    <div>
+                        <label for="editEjemplaresOcupados">Ejemplares Ocupados:</label>
+                        <input type="number" id="editEjemplaresOcupados" required>
+                    </div>
+                    <button type="submit">Actualizar</button>
+                </form>
+            </div>
+        </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/front_end/js/libros.js"></script>
 </body>
-
 </html>

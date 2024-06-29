@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca Virtual</title>
     <link rel="stylesheet" href="/front_end/styles/style.css">
+    <link rel="stylesheet" href="/front_end/styles/modal.css">
     <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
-<body>
+<body onload="listarUsuario();">
     <header>
         <nav class="navbar">
             <div class="navbar-brand">
@@ -26,7 +28,7 @@
         </nav>
     </header>
     <main>
-        <section id="libros">
+        <section id="usuarios">
             <div class="header">
                 <h2>Lista de Usuarios</h2>
                 <a href="usuarios.html">Resgistro de Usuarios</a>
@@ -35,14 +37,14 @@
                 <div class="filter-group">
                     <label for="filter-name">Filtrar:</label>
                     <div class="input-container">
-                        <input type="text" id="filter-name" class="filter-input"
+                        <input type="text" id="filtrarUsuario" class="filter-input"
                             placeholder="Ingrese el nombre, correo" />
                     </div>
                 </div>
             </div>
             <div class="botones-filtro">
-                <button id="aplicar-filtro">Aplicar Filtro</button>
-                <button id="limpiar-filtro">Limpiar Filtro</button>
+                <button id="aplicar-filtro"  onclick="filtrarUsuario()">Aplicar Filtro</button>
+                <button id="limpiar-filtro"  onclick="limpiarFiltro()">Limpiar Filtro</button>
             </div>
 
             <!--Tabla de Registro -->
@@ -58,9 +60,9 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody id="cuerpoTablaCliente">
+                    <tbody id="cuerpoTablaUsuario">
                         <tr>
-                            <td>1</td>
+                           <!-- <td>1</td>
                             <td>DNI</td>
                             <td>12345678</td>
                             <td>John</td>
@@ -94,7 +96,7 @@
                                     <i class="fas fa-eye"></i>
                                 </span>
                             </td>
-                        </tr>
+                        </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -103,7 +105,46 @@
     <footer>
         <p>© 2024 Biblioteca</p>
     </footer>
-    <script src="/front_end/js/validaciones.js"></script>
+
+      <!-- Modal for editing book details -->
+      <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Editar Usuario</h2>
+            <form id="editBookForm" onsubmit="updateUsuario(event)">
+                <input type="hidden" id="editBookId">
+                <div>
+                    <label for="editNombre">Nombre:</label>
+                    <input type="text" id="editNombre" required>
+                </div>
+                <div>
+                    <label for="editDireccion">Direccion:</label>
+                    <input type="text" id="editDireccion" required>
+                </div>
+                <div>
+                    <label for="editCorreo">Correo Electrónico:</label>
+                    <input type="text" id="editCorreo" required>
+                </div>
+                <div>
+                    <label for="editTipoUsuario">Tipo de Usuario:</label>
+                    <select id="editTipoUsuario" name="editTipoUsuario">
+                        <option value="lector">Lector</option>
+                        <option value="bibliotecario">Bibliotecario</option>
+                        <option value="administrador">Administrador</option>
+                    </select>
+                </div>
+                <button type="submit">Actualizar</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="/front_end/js/usuario.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

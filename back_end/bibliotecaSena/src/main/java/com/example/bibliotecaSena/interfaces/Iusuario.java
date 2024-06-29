@@ -4,13 +4,17 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
+import com.example.bibliotecaSena.models.usuario;
 
-import com.example.bibliotecaSena.model.usuario;
-
-public interface Iusuario extends CrudRepository<usuario,String> {
+@Repository
+public interface Iusuario extends CrudRepository<usuario,String>{
 	@Query("SELECT u FROM usuario u WHERE "
-			+"u.nombre LIKE %?1% OR "
-			+"u.correo LIKE %?1%")
+			+ "u.nombre LIKE %?1% OR "
+			+ "u.correo LIKE %?1%")
+	
 	List<usuario>filtroUsuario(String filtro);
+
+
 }

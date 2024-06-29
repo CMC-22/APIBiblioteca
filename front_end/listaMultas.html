@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca Virtual</title>
     <link rel="stylesheet" href="/front_end/styles/style.css">
+    <link rel="stylesheet" href="/front_end/styles/modal.css">
     <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
-<body>
+<body onload="listarMultas();">
     <header>
         <nav class="navbar">
             <div class="navbar-brand">
@@ -26,7 +28,7 @@
         </nav>
     </header>
     <main>
-        <section id="libros">
+        <section id="multas">
             <div class="header">
                 <h2>Lista de Multas</h2>
                 <a href="multas.html">Registro de Multas</a>
@@ -45,9 +47,9 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody id="cuerpoTablaCliente">
+                    <tbody id="cuerpoTablaMultas">
                         <tr>
-                            <td>1</td>
+                           <!-- <td>1</td>
                             <td>DNI</td>
                             <td>12345678</td>
                             <td>John</td>
@@ -83,7 +85,7 @@
                                     <i class="fas fa-eye"></i>
                                 </span>
                             </td>
-                        </tr>
+                        </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -92,7 +94,46 @@
     <footer>
         <p>© 2024 Biblioteca</p>
     </footer>
-    <script src="/front_end/js/validaciones.js"></script>
+
+    <!-- Modal for editing book details -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Editar Multas</h2>
+            <form id="form-update-multa" onsubmit="updateMultas(event)">
+                <input type="hidden" id="editBookId" name="editBookId">
+                <div>
+                    <label for="editUsuarioMultado">Usuario Multado:</label>
+                    <input type="text" id="editUsuarioMultado" required>
+                </div>
+                <div>
+                    <label for="editPrestamo">Préstamo:</label>
+                    <input type="text" id="editPrestamo" required>
+                </div>
+                <div>
+                    <label for="editValorMulta">Valor Multa:</label>
+                    <input type="text" id="editValorMulta" required>
+                </div>
+                <div>
+                    <label for="editFechaMulta">Fecha de la Multa:</label>
+                    <input type="text" id="editFechaMulta" required>
+                </div>
+                <div>
+                    <label for="editEstado">Estado:</label>
+                    <select id="editEstado" name="editEstado">
+                        <option value="pendiente">Pendiente</option>
+                        <option value="pagado">Pagado</option>
+                    </select>
+                </div>
+                <button type="submit">Actualizar</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="/front_end/js/multas.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

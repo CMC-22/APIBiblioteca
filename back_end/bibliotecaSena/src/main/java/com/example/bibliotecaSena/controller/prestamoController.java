@@ -1,11 +1,13 @@
-package com.example.bibliotecaSena.controller;
+package com.example.bibliotecaSena.Controller;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -13,10 +15,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import com.example.bibliotecaSena.interfaceService.IprestamoService;
-
-import com.example.bibliotecaSena.model.prestamo;
+import com.example.bibliotecaSena.Service.libroService;
+import com.example.bibliotecaSena.Service.usuarioService;
+import com.example.bibliotecaSena.interfaces.Ilibro;
+import com.example.bibliotecaSena.interfaces.Iusuario;
+import com.example.bibliotecaSena.interfacesService.IprestamoService;
+import com.example.bibliotecaSena.interfacesService.IusuarioService;
+import com.example.bibliotecaSena.models.libro;
+import com.example.bibliotecaSena.models.prestamo;
+import com.example.bibliotecaSena.models.usuario;
 
 @RequestMapping("/api/v1/prestamo")
 @RestController
@@ -25,40 +32,67 @@ public class prestamoController {
 	
 	@Autowired
 	private IprestamoService prestamoService;
-	
+
 	@PostMapping("/")
-	public ResponseEntity<Object>save(@ModelAttribute("prestamo") prestamo prestamo) {
+	public ResponseEntity<Object> save(@RequestBody prestamo prestamo) {
 		prestamoService.save(prestamo);
-		return new ResponseEntity<>(prestamo,HttpStatus.OK);
-	}
-	
-	@GetMapping("/")
-	public ResponseEntity<Object>findAll(){
-		var listaPrestamo=prestamoService.findAll();
-		return new ResponseEntity<>(listaPrestamo, HttpStatus.OK);
-	}
-	
-	
-	@GetMapping("/{id}")
-	public ResponseEntity<Object>findOne(@PathVariable String id){
-		var prestamo=prestamoService.findOne(id);
 		return new ResponseEntity<>(prestamo, HttpStatus.OK);
 	}
 	
+	@GetMapping("/usuarios")
+	public ResponseEntity<Object> getAllUsuarios() {
+	    try {
+	        List<usuario> usuarios = Iusuario.findAll();
+	        return new ResponseEntity<>(usuarios, HttpStatus.OK);
+	    } catch (Exception e) {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al obtener la lista de usuarios: " + e.getMessage());
+	    }
+	}
+	
+	@GetMapping("/libros")
+	public ResponseEntity<Object> getAllLibros() {
+	    try {
+	        List<libro> libros = IusuarioService .findAll();
+	        return new ResponseEntity<>(libros, HttpStatus.OK);
+	    } catch (Exception e) {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al obtener la lista de libros: " + e.getMessage());
+	    }
+	}
+
+
+	@GetMapping("/")
+	public ResponseEntity<Object>findAll(){
+		var listaPrestamo = prestamoService.findAll();
+		return new ResponseEntity<>(listaPrestamo, HttpStatus.OK);
+	}
+	
+
+	@GetMapping("/{id}")
+	public ResponseEntity<Object>findOne(@PathVariable String id){
+		var prestamo = prestamoService.findOne(id);
+		return new ResponseEntity<>(prestamo, HttpStatus.OK);
+	}
+
+	@DeleteMapping("/eliminarPermanente/{id}")
+	public ResponseEntity<Object>delete(@PathVariable String id){
+		prestamoService.delete(id);
+		return new ResponseEntity<>("Registro eliminado", HttpStatus.OK);
+	}
+
 	@PutMapping("/{id}")
 	public ResponseEntity<Object>update(@PathVariable String id, @RequestBody prestamo prestamoUpdate){
 		var prestamo = prestamoService.findOne(id).get();
-		if(prestamo !=null) {
-			prestamo.setUsuario(prestamoUpdate.getUsuario());
-			prestamo.setLibro(prestamoUpdate.getLibro());
-			prestamo.setFecha_prestamo(prestamoUpdate.getFecha_prestamo());
+		if (prestamo !=null) {
 			prestamo.setFecha_devolucion(prestamoUpdate.getFecha_devolucion());
+			prestamo.setFecha_prestamo(prestamoUpdate.getFecha_prestamo());
+			prestamo.setLibro(prestamoUpdate.getLibro());
+			prestamo.setUsuario(prestamoUpdate.getUsuario());
 			prestamo.setEstado(prestamoUpdate.getEstado());
-			prestamoService.save(prestamo);
-			return new ResponseEntity<>(prestamo, HttpStatus.OK);
+			prestamoService.save(prestamoUpdate);
+			return new ResponseEntity<>(prestamo,HttpStatus.OK);
 		}
 		else {
-			return new ResponseEntity<>("Error paciente no encontrado", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Error: prestamo no encontrado",HttpStatus.BAD_REQUEST);
 		}
 	}
 
