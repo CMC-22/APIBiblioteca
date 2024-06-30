@@ -1,4 +1,4 @@
-let url = "http://localhost:8080/api/v1/libro/";
+let url = "http://localhost:8081/api/v1/libro/";
 
 document.addEventListener("DOMContentLoaded", function () {
   const titulo = document.getElementById("titulo");
@@ -72,7 +72,7 @@ function validarTitulo(elemento) {
 // funcion para verificar el titulo del libro sea unico
 function verificarTitulo(titulo, callback) {
   $.ajax({
-    url: 'http://localhost:8080/api/v1/libro/check/' + encodeURIComponent(titulo),
+    url: 'http://localhost:8081/api/v1/libro/check/' + encodeURIComponent(titulo),
     type: 'GET',
     success: function (response) {
       callback(response);
@@ -155,7 +155,7 @@ function validarIsbn(elemento) {
 //verificar que isbn sea unico y no se repita
 function verificarIsbn(isbn, callback) {
   $.ajax({
-    url: 'http://localhost:8080/api/v1/libro/checkIsbn/' + isbn,
+    url: 'http://localhost:8081/api/v1/libro/checkIsbn/' + isbn,
     type: 'GET',
     success: function (response) {
       callback(response);
@@ -320,7 +320,7 @@ function registrarLibro(event) {
 
           $.ajax({
             type: 'POST',
-            url: 'http://localhost:8080/api/v1/libro/',
+            url: 'http://localhost:8081/api/v1/libro/',
             contentType: "application/json",
             data: JSON.stringify(libro),
             success: function (response) {
@@ -438,7 +438,7 @@ function eliminarLibro(id_libro) {
   }).then((result) => {
     if (result.isConfirmed) {
       $.ajax({
-        url: 'http://localhost:8080/api/v1/libro/eliminarPermanente/' + id_libro,
+        url: 'http://localhost:8081/api/v1/libro/eliminarPermanente/' + id_libro,
         type: "DELETE",
         success: function (result) {
           //recarga la lista de  libros despues de eliminar

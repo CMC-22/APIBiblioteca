@@ -1,4 +1,4 @@
-let url = "http://localhost:8080/api/v1/usuario/";
+let url = "http://localhost:8081/api/v1/usuario/";
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -79,7 +79,7 @@ function validarNombre(elemento) {
 // funcion para verificar el titulo del libro sea unico
 function verificarNombre(nombre, callback) {
   $.ajax({
-    url: 'http://localhost:8080/api/v1/usuario/check/' + encodeURIComponent(nombre),
+    url: 'http://localhost:8081/api/v1/usuario/check/' + encodeURIComponent(nombre),
     type: 'GET',
     success: function (response) {
       callback(response);
@@ -196,7 +196,7 @@ function registrarUsuario(event) {
 
       $.ajax({
         type: 'POST',
-        url: 'http://localhost:8080/api/v1/usuario/',
+        url: 'http://localhost:8081/api/v1/usuario/',
         contentType: "application/json",
         data: JSON.stringify(usuario),
         success: function (response) {
@@ -308,7 +308,7 @@ function eliminarUsuario(id_usuario) {
   }).then((result) => {
     if (result.isConfirmed) {
       $.ajax({
-        url: 'http://localhost:8080/api/v1/usuario/eliminarPermanente/' + id_usuario,
+        url: 'http://localhost:8081/api/v1/usuario/eliminarPermanente/' + id_usuario,
         type: "DELETE",
         success: function (result) {
           //recarga la lista de  usuarios despues de eliminar

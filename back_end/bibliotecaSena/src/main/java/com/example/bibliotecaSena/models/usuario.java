@@ -29,23 +29,22 @@ public class usuario {
 	@Column(name = "tipo_usuario", nullable = false, length = 50)
 	private String tipo_usuario;
 	
-	@OneToMany(mappedBy = "usuario")
-	private List<prestamo> prestamos;
+	 @OneToMany(mappedBy = "usuario")
+	    private List<prestamo> prestamos;
+
 
 	public usuario() {
 		super();
 	}
 	
 
-	public usuario(String id_usuario, String nombre, String direccion, String correo, String tipo_usuario,
-			List<com.example.bibliotecaSena.models.prestamo> prestamo) {
+	public usuario(String id_usuario, String nombre, String direccion, String correo, String tipo_usuario) {
 		super();
 		this.id_usuario = id_usuario;
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.correo = correo;
 		this.tipo_usuario = tipo_usuario;
-		this.prestamos = prestamo;
 	}
 
 
@@ -96,15 +95,5 @@ public class usuario {
 
 	public void setTipo_usuario(String tipo_usuario) {
 		this.tipo_usuario = tipo_usuario;
-	}
-
-
-	public List<prestamo> getPrestamo() {
-		return prestamos;
-	}
-
-
-	public void setPrestamo(List<prestamo> prestamo) {
-		this.prestamos = prestamo;
 	}
 }
