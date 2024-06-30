@@ -7,6 +7,5 @@ import com.example.bibliotecaSena.models.prestamo;
 
 @Repository
 public interface Iprestamo extends CrudRepository<prestamo, String> {
-
-
+	
 }

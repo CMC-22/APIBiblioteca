@@ -62,6 +62,5 @@ public class prestamoService implements IprestamoService{
 		data.deleteById(id_prestamo);
 		return 1;
 	}
-	
 
 }

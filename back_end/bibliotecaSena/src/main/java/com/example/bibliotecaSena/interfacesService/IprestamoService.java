@@ -10,4 +10,5 @@ public interface IprestamoService {
 	public List<prestamo>findAll();
 	public Optional<prestamo>findOne(String id_prestamo);
 	public int delete(String id_prestamo);
+
 }

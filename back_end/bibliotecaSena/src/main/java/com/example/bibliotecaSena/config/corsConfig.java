@@ -15,7 +15,7 @@ public class corsConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // Permite CORS para todas las rutas
                         .allowedOrigins("http://127.0.0.1:5500") // Cambia a tu origen permitido
-                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
             }

@@ -23,6 +23,7 @@ public class multasController {
 	
 	@Autowired
 	private ImultasService multasService;
+	
 
 	@PostMapping("/")
 	public ResponseEntity<Object> save(@RequestBody multas multas) {
@@ -41,7 +42,7 @@ public class multasController {
 		var multas = multasService.findOne(id);
 		return new ResponseEntity<>(multas, HttpStatus.OK);
 	}
-
+	
 	@DeleteMapping("/eliminarPermanente/{id}")
 	public ResponseEntity<Object>delete(@PathVariable String id){
 		multasService.delete(id);
@@ -52,8 +53,6 @@ public class multasController {
 	public ResponseEntity<Object>update(@PathVariable String id, @RequestBody multas multasUpdate){
 		var multas = multasService.findOne(id).get();
 		if (multas !=null) {
-			multas.setUsuario_multado(multasUpdate.getUsuario_multado());
-			multas.setPrestamo(multasUpdate.getPrestamo());
 			multas.setValor_multa(multasUpdate.getValor_multa());
 			multas.setFecha_multa(multasUpdate.getFecha_multa());
 			multas.setEstado(multasUpdate.getEstado());

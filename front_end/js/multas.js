@@ -1,4 +1,4 @@
-let url = "http://localhost:8080/api/v1/multas/";
+let url = "http://localhost:8081/api/v1/multas/";
 
 function validarUsuarioMultado(elemento) {
     var valor = elemento.value.trim();
@@ -115,7 +115,42 @@ function validarEstado(elemento) {
     return true;
 }
 
-function registrarMultas(event) {
+async function cargarUsuarios() {
+  try {
+      const response = await fetch('http://localhost:8081/api/v1/usuario');
+      const usuarios = await response.json();
+      const usuarioSelect = document.getElementById('usuario-multado');
+      usuarios.forEach(usuario => {
+          const option = document.createElement('option');
+          option.value = usuario.id_usuario;
+          option.textContent = usuario.nombre;
+          usuarioSelect.appendChild(option);
+      });
+  } catch (error) {
+      console.error('Error cargando usuarios:', error);
+  }
+}
+
+async function cargarPrestamos() {
+  const usuarioId = document.getElementById('usuario-multado').value;
+  try {
+      const response = await fetch(`http://localhost:8081/api/v1/prestamo/usuario/${id_usuario}`);
+      const prestamos = await response.json();
+      const prestamoSelect = document.getElementById('prestamo-multa');
+      prestamoSelect.innerHTML = ''; // Limpiar opciones anteriores
+      prestamos.forEach(prestamo => {
+          const option = document.createElement('option');
+          option.value = prestamo.id_prestamo;
+          option.textContent = `Prestamo ID: ${prestamo.id_prestamo}, Libro: ${prestamo.libro.titulo}`;
+          prestamoSelect.appendChild(option);
+      });
+  } catch (error) {
+      console.error('Error cargando préstamos:', error);
+  }
+}
+
+
+async function registrarMultas(event) {
     event.preventDefault();
 
     var form = document.getElementById('form-multas');
@@ -127,8 +162,7 @@ function registrarMultas(event) {
     }
 
     var multas = {
-        usuario_multado: form['usuario-multado'].value,
-        prestamo: form['prestamo-multa'].value,
+        prestamo: { id_prestamo: form['prestamo-multa'].value},
         valor_multa: form['valor-multa'].value,
         fecha_multa: form['fecha-multa'].value,
         estado: form['estado-multa'].value
@@ -136,7 +170,7 @@ function registrarMultas(event) {
 
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:8080/api/v1/multas/',
+        url: 'http://localhost:8081/api/v1/multas/',
         contentType: "application/json",
         data: JSON.stringify(multas),
         success: function (response) {
@@ -207,7 +241,7 @@ function eliminarMulta(id_multas) {
   }).then((result) => {
     if (result.isConfirmed) {
       $.ajax({
-        url: 'http://localhost:8080/api/v1/multas/eliminarPermanente/' + id_multas,
+        url: 'http://localhost:8081/api/v1/multas/eliminarPermanente/' + id_multas,
         type: "DELETE",
         success: function (result) {
           //recarga la lista de  multas despues de eliminar

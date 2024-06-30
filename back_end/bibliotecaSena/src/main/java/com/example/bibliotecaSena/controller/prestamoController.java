@@ -83,8 +83,8 @@ public class prestamoController {
 		if (prestamo !=null) {
 			prestamo.setFecha_devolucion(prestamoUpdate.getFecha_devolucion());
 			prestamo.setFecha_prestamo(prestamoUpdate.getFecha_prestamo());
-			prestamo.setLibro(prestamoUpdate.getLibro());
 			prestamo.setUsuario(prestamoUpdate.getUsuario());
+			prestamo.setLibro(prestamoUpdate.getLibro());
 			prestamo.setEstado(prestamoUpdate.getEstado());
 			prestamoService.save(prestamo);
 			return new ResponseEntity<>(prestamo,HttpStatus.OK);

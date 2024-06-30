@@ -32,10 +32,14 @@
             </div>
             <form id="form-multas" onsubmit="registrarMultas(event);">
                 <label for="usuario-multado">Usuario Multado:</label>
-                <input type="text" id="usuario-multado" class="form-control" name="usuario-multado" required>
+                <select id="usuario-multado" onchange="cargarPrestamos()" name="usuario-multado" required>
+                    <option value="">Seleccionar...</option>
+                </select>
 
                 <label for="prestamo-multa">Préstamo:</label>
-                <input type="text" id="prestamo-multa" class="form-control" name="prestamo-multa" required>
+                <select id="prestamo-multa" name="prestamo-multa" required>
+                    <option value="">Seleccionar...</option>
+                </select>
 
                 <label for="valor-multa">Valor de la Multa:</label>
                 <input type="number" id="valor-multa" class="form-control" name="valor-multa" required>

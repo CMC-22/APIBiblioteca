@@ -23,7 +23,7 @@ function validarFechaPrestamo(elemento) {
   return true;
 }
 
-function validarFechaDevolucion(elemento) {
+function validarFechaDevolucion(elemento, fechaPrestamoElemento) {
   var valor = elemento.value.trim();
   if (valor === '') {
     Swal.fire({
@@ -43,6 +43,31 @@ function validarFechaDevolucion(elemento) {
     elemento.focus();
     return false;
   }
+
+  var fechaPrestamoValor = fechaPrestamoElemento.value.trim();
+  if (fechaPrestamoValor === '') {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'El campo Fecha préstamo es obligatorio para validar la fecha de devolución',
+    });
+    fechaPrestamoElemento.focus();
+    return false;
+  }
+
+  var fechaPrestamo = new Date(fechaPrestamoValor);
+  var fechaDevolucion = new Date(valor);
+
+  if (fechaDevolucion < fechaPrestamo) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'La fecha de devolución no puede ser anterior a la fecha de préstamo',
+    });
+    elemento.focus();
+    return false;
+  }
+
   return true;
 }
 
@@ -142,7 +167,7 @@ function registrarPrestamo(event) {
   var form = document.getElementById('form-prestamos');
 
   if (!validarFechaPrestamo(form['fecha-prestamo']) ||
-    !validarFechaDevolucion(form['fecha-devolucion']) ||
+    !validarFechaDevolucion(form['fecha-devolucion'], form['fecha-prestamo']) ||
     !validarUsuario(form['usuario-prestamo']) ||
     !validarLibro(form['libro-prestado']) ||
     !validarEstado(form['estado'])) {

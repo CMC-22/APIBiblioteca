@@ -11,32 +11,31 @@ import jakarta.persistence.OneToMany;
 
 @Entity(name="usuario")
 public class usuario {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(name = "id_usuario", nullable = false, length = 36)
 	private String id_usuario;
-	
+
 	@Column(name = "nombre", nullable = false, length = 50)
 	private String nombre;
-	
+
 	@Column(name = "direccion", nullable = false, length = 50)
 	private String direccion;
-	
+
 	@Column(name = "correo", nullable = false, length = 100)
 	private String correo;
-	
+
 	@Column(name = "tipo_usuario", nullable = false, length = 50)
 	private String tipo_usuario;
-	
-	 @OneToMany(mappedBy = "usuario")
-	    private List<prestamo> prestamos;
 
+	@OneToMany(mappedBy = "usuario")
+	private List<prestamo> prestamos;
 
 	public usuario() {
 		super();
 	}
-	
+
 
 	public usuario(String id_usuario, String nombre, String direccion, String correo, String tipo_usuario) {
 		super();
