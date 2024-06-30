@@ -1,11 +1,14 @@
 package com.example.bibliotecaSena.models;
 
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 
 @Entity(name="libro")
@@ -33,6 +36,9 @@ public class libro {
 	
 	@Column(name = "numero_ejemplares_ocupados", nullable = false)
 	private int numero_ejemplares_ocupados;
+	
+	@OneToMany(mappedBy = "libro")
+	private List<prestamo> prestamos;
 
 	public libro() {
 		super();
@@ -40,7 +46,8 @@ public class libro {
 
 
 	public libro(String id_libro, String titulo, String autor, String isbn, String genero,
-			int numero_ejemplares_disponibles, int numero_ejemplares_ocupados) {
+			int numero_ejemplares_disponibles, int numero_ejemplares_ocupados,
+			List<com.example.bibliotecaSena.models.prestamo> prestamo) {
 		super();
 		this.id_libro = id_libro;
 		this.titulo = titulo;
@@ -49,8 +56,8 @@ public class libro {
 		this.genero = genero;
 		this.numero_ejemplares_disponibles = numero_ejemplares_disponibles;
 		this.numero_ejemplares_ocupados = numero_ejemplares_ocupados;
+		this.prestamos = prestamo;
 	}
-
 
 
 	public String getId_libro() {
@@ -112,5 +119,17 @@ public class libro {
 	public void setNumero_ejemplares_ocupados(int numero_ejemplares_ocupados) {
 		this.numero_ejemplares_ocupados = numero_ejemplares_ocupados;
 	}
+
+
+	public List<prestamo> getPrestamo() {
+		return prestamos;
+	}
+
+
+	public void setPrestamo(List<prestamo> prestamo) {
+		this.prestamos = prestamo;
+	}
+	
+	
 
 }

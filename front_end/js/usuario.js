@@ -98,9 +98,7 @@ function verificarNombre(nombre, callback) {
 
 // Función para validar el campo Dirección
 function validarDireccion(elemento) {
-  // Eliminar espacios en blanco al inicio y al final
-  let valor = elemento.value.trim();
-  if (!elemento || !elemento.value) {
+  if (elemento.value.trim() === '') {
     Swal.fire({
       icon: 'error',
       title: 'Error',
@@ -109,8 +107,6 @@ function validarDireccion(elemento) {
     elemento.focus();
     return false;
   }
-
-  
   if (elemento.value.includes('*')) {
     Swal.fire({
       icon: 'error',
@@ -122,6 +118,7 @@ function validarDireccion(elemento) {
   }
   return true;
 }
+
 
 // Función para validar el campo Correo
 function validarCorreo(elemento) {

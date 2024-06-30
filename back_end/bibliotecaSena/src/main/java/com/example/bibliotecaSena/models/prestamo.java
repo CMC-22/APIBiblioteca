@@ -3,7 +3,6 @@ package com.example.bibliotecaSena.models;
 import java.time.LocalDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,28 +12,27 @@ import jakarta.persistence.ManyToOne;
 
 @Entity(name="prestamo")
 public class prestamo {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(name = "id_prestamo", nullable = false, length = 36)
 	private String id_prestamo;
-	
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_usuario")
-    private usuario Usuario;
+	@ManyToOne
+	@JoinColumn(name = "id_usuario", nullable = false)
+	private usuario usuario;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_libro")
-    private libro Libro;
- 
-	
+	@ManyToOne
+	@JoinColumn(name = "id_libro", nullable = false)
+	private libro libro;
+
+
 	@Column(name = "fecha_prestamo", nullable = false)
 	private LocalDate fecha_prestamo;
-	
+
 	@Column(name = "fecha_devolucion", nullable = false)
 	private LocalDate fecha_devolucion;
-	
+
 	@Column(name = "estado", nullable = false, length = 50)
 	private String estado;
 
@@ -42,16 +40,18 @@ public class prestamo {
 		super();
 	}
 
-	public prestamo(String id_prestamo, usuario usuario, libro libro, LocalDate fecha_prestamo,
-			LocalDate fecha_devolucion, String estado) {
+	public prestamo(String id_prestamo, com.example.bibliotecaSena.models.usuario usuario,
+			com.example.bibliotecaSena.models.libro libro, LocalDate fecha_prestamo, LocalDate fecha_devolucion,
+			String estado) {
 		super();
 		this.id_prestamo = id_prestamo;
-		Usuario = usuario;
-		Libro = libro;
+		this.usuario = usuario;
+		this.libro = libro;
 		this.fecha_prestamo = fecha_prestamo;
 		this.fecha_devolucion = fecha_devolucion;
 		this.estado = estado;
 	}
+
 
 	public String getId_prestamo() {
 		return id_prestamo;
@@ -61,20 +61,22 @@ public class prestamo {
 		this.id_prestamo = id_prestamo;
 	}
 
+	
+
 	public usuario getUsuario() {
-		return Usuario;
+		return usuario;
 	}
 
 	public void setUsuario(usuario usuario) {
-		Usuario = usuario;
+		this.usuario = usuario;
 	}
 
 	public libro getLibro() {
-		return Libro;
+		return libro;
 	}
 
 	public void setLibro(libro libro) {
-		Libro = libro;
+		this.libro = libro;
 	}
 
 	public LocalDate getFecha_prestamo() {

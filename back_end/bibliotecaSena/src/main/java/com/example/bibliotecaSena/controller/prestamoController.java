@@ -14,11 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.bibliotecaSena.Service.libroService;
-import com.example.bibliotecaSena.Service.usuarioService;
-import com.example.bibliotecaSena.interfaces.Ilibro;
-import com.example.bibliotecaSena.interfaces.Iusuario;
+import com.example.bibliotecaSena.interfacesService.IlibroService;
 import com.example.bibliotecaSena.interfacesService.IprestamoService;
 import com.example.bibliotecaSena.interfacesService.IusuarioService;
 import com.example.bibliotecaSena.models.libro;
@@ -32,33 +28,35 @@ public class prestamoController {
 	
 	@Autowired
 	private IprestamoService prestamoService;
+	
+	@Autowired
+	private IusuarioService usuarioService;
+	
+	@Autowired
+	private IlibroService libroService;
+	
+	@GetMapping("/usuariosregistrados")
+	public ResponseEntity<Object> usuariosRegistrados() {
+	        List<usuario> listaUsuarios = usuarioService.usuariosRegistrados();
+	        return new ResponseEntity<>(listaUsuarios, HttpStatus.OK);
+	}
+	
+	@GetMapping("/librosregistrados")
+	public ResponseEntity<Object> librosRegistrados() {
+	        List<libro> listaLibros = libroService.librosRegistrados();
+	        return new ResponseEntity<>(listaLibros, HttpStatus.OK);
+	}
 
 	@PostMapping("/")
-	public ResponseEntity<Object> save(@RequestBody prestamo prestamo) {
-		prestamoService.save(prestamo);
-		return new ResponseEntity<>(prestamo, HttpStatus.OK);
+	public ResponseEntity<Object> registrarPrestamo(@RequestBody prestamo prestamo) {
+		try {
+			String idPrestamo = prestamoService.save(prestamo);
+			return new ResponseEntity<>(idPrestamo, HttpStatus.OK);
+		}catch (Exception e) {
+		return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
 	}
 	
-	@GetMapping("/usuarios")
-	public ResponseEntity<Object> getAllUsuarios() {
-	    try {
-	        List<usuario> usuarios = Iusuario.findAll();
-	        return new ResponseEntity<>(usuarios, HttpStatus.OK);
-	    } catch (Exception e) {
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al obtener la lista de usuarios: " + e.getMessage());
-	    }
-	}
-	
-	@GetMapping("/libros")
-	public ResponseEntity<Object> getAllLibros() {
-	    try {
-	        List<libro> libros = IusuarioService .findAll();
-	        return new ResponseEntity<>(libros, HttpStatus.OK);
-	    } catch (Exception e) {
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al obtener la lista de libros: " + e.getMessage());
-	    }
-	}
-
 
 	@GetMapping("/")
 	public ResponseEntity<Object>findAll(){
@@ -88,7 +86,7 @@ public class prestamoController {
 			prestamo.setLibro(prestamoUpdate.getLibro());
 			prestamo.setUsuario(prestamoUpdate.getUsuario());
 			prestamo.setEstado(prestamoUpdate.getEstado());
-			prestamoService.save(prestamoUpdate);
+			prestamoService.save(prestamo);
 			return new ResponseEntity<>(prestamo,HttpStatus.OK);
 		}
 		else {

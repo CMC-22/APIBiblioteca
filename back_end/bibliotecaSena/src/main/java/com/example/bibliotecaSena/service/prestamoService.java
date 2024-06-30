@@ -20,24 +20,29 @@ public class prestamoService implements IprestamoService{
 	private Iprestamo data;
 	
 	@Autowired
-    private Iusuario Iusuario; // Repositorio de usuario
+    private Iusuario usuarioService; // Repositorio de usuario
     
     @Autowired
-    private Ilibro Ilibro; // Repositorio de libro
+    private Ilibro libroService; // Repositorio de libro
     
     @Override
     public String save(prestamo prestamo) {
-        // Validar que el usuario y el libro existan
-        usuario usuario = Iusuario.findById(prestamo.getUsuario().getId_usuario())
-                .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado"));
-
-        libro libro = Ilibro.findById(prestamo.getLibro().getId_libro())
-                .orElseThrow(() -> new IllegalArgumentException("Libro no encontrado"));
-
-        prestamo.setUsuario(usuario);
-        prestamo.setLibro(libro);
-
-        return data.save(prestamo).getId_prestamo();
+    	Optional<usuario> usuario = usuarioService.findById(prestamo.getUsuario().getId_usuario());
+    	Optional<libro> libro = libroService.findById(prestamo.getLibro().getId_libro());
+    	
+    	if (!usuario.isPresent()) {
+    		throw new IllegalArgumentException("Usuario no encontrado");
+    	}
+    	
+    	if (!libro.isPresent()) {
+    		throw new IllegalArgumentException("Libro no encontrado");
+    	}
+    	
+    	prestamo.setUsuario(usuario.get());
+    	prestamo.setLibro(libro.get());
+    	
+    	return data.save(prestamo).getId_prestamo();
+     
     }
 
 	

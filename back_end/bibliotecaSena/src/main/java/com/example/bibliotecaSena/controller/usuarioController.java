@@ -67,7 +67,7 @@ public class usuarioController {
 			usuario.setCorreo(usuarioUpdate.getCorreo());
 			usuario.setDireccion(usuarioUpdate.getDireccion());
 			usuario.setTipo_usuario(usuarioUpdate.getTipo_usuario());
-			usuarioService.save(usuarioUpdate);
+			usuarioService.save(usuario);
 			return new ResponseEntity<>(usuario,HttpStatus.OK);
 		}
 		else {

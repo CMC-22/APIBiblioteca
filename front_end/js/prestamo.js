@@ -57,15 +57,6 @@ function validarFechaDevolucion(elemento) {
       elemento.focus();
       return false;
     }
-    if (valor.includes('*')) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'El campo Usuario no puede contener asteriscos (*)',
-      });
-      elemento.focus();
-      return false;
-    }
     return true;
   }
   
@@ -76,15 +67,6 @@ function validarFechaDevolucion(elemento) {
         icon: 'error',
         title: 'Error',
         text: 'El campo Libro es obligatorio',
-      });
-      elemento.focus();
-      return false;
-    }
-    if (valor.includes('*')) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'El campo Libro no puede contener asteriscos (*)',
       });
       elemento.focus();
       return false;
@@ -115,44 +97,44 @@ function validarFechaDevolucion(elemento) {
     return true;
   }
   
-
-
-  // Cargar la lista de usuarios
+  //cargar la lista de usuario
   function cargarUsuarios() {
-      $.ajax({
-          url: url + "usuarios/",
-          type: "GET",
-          success: function (usuarios) {
-              let selectUsuarios = document.getElementById("usuario-prestamo");
-              selectUsuarios.innerHTML = "<option value=''>Seleccionar...</option>";
-              usuarios.forEach(usuario => {
-                  selectUsuarios.innerHTML += `<option value="${usuario.id_usuario}">${usuario.nombre}</option>`;
-              });
-          },
-          error: function (error) {
-              console.error("Error al cargar la lista de usuarios", error);
-          }
-      });
+    $.ajax({
+      url: url + "usuariosregistrados",
+      type: "GET",
+      success: function(usuarios) {
+        let selectUsuarios = document.getElementById("usuario-prestamo");
+        selectUsuarios.innerHTML = "<option value=''>Seleccionar...</option>";
+        usuarios.forEach(usuario => {
+          selectUsuarios.innerHTML += `<option value="${usuario.id_usuario}">${usuario.nombre}</option>`;
+        });
+      },
+      error: function(error) {
+        console.error("Error al cargar la lista de usuarios", error);
+      }
+    });
   }
-  
-  // Cargar la lista de libros
+
+  // Cargar lista de libros
   function cargarLibros() {
-      $.ajax({
-          url: url + "libros/",
-          type: "GET",
-          success: function (libros) {
-              let selectLibros = document.getElementById("libro-prestado");
-              selectLibros.innerHTML = "<option value=''>Seleccionar...</option>";
-              libros.forEach(libro => {
-                  selectLibros.innerHTML += `<option value="${libro.id_libro}">${libro.titulo}</option>`;
-              });
-          },
-          error: function (error) {
-              console.error("Error al cargar la lista de libros", error);
-          }
-      });
+    $.ajax({
+      url: url + "librosregistrados",
+      type: "GET",
+      success: function(libros) {
+        let selectLibros = document.getElementById("libro-prestado");
+        selectLibros.innerHTML = "<option value=''>Seleccionar...</option>";
+        libros.forEach(libro => {
+          selectLibros.innerHTML += `<option value="${libro.id_libro}">${libro.titulo}</option>`;
+        });
+      },
+      error: function(error) {
+        console.error("Error al cargar la lista de libros", error);
+      }
+    });
   }
-  
+  // Inicializar carga de datos
+cargarUsuarios();
+cargarLibros();
 
   function registrarPrestamo(event) {
     event.preventDefault();
@@ -168,10 +150,10 @@ function validarFechaDevolucion(elemento) {
     }
   
     var prestamo = {
+      usuario: { id_usuario: form['usuario-prestamo'].value },
+      libro: { id_libro: form['libro-prestado'].value },
       fecha_prestamo: form['fecha-prestamo'].value,
       fecha_devolucion: form['fecha-devolucion'].value,
-      usuario: form['usuario-prestamo'].value,
-      libro: form['libro-prestado'].value,
       estado: form['estado'].value
     };
   
@@ -215,8 +197,8 @@ function listarPrestamo() {
                       <td>${prestamo.id_prestamo}</td>
                       <td>${prestamo.fecha_prestamo}</td>
                       <td>${prestamo.fecha_devolucion}</td>
-                      <td>${prestamo.usuario}</td>
-                      <td>${prestamo.libro}</td>
+                      <td>${prestamo.usuario.nombre}</td>
+                      <td>${prestamo.libro.titulo}</td>
                       <td>${prestamo.estado}</td>
                       <td>
                           <a href="javascript:eliminarPrestamo('${prestamo.id_prestamo}');" class="btn btn-danger btn-sm btn-eliminar"><i class="fas fa-trash-alt"></i></a>

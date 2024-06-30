@@ -78,7 +78,7 @@ public class libroController {
 			libro.setIsbn(libroUpdate.getIsbn());
 			libro.setNumero_ejemplares_disponibles(libroUpdate.getNumero_ejemplares_disponibles());
 			libro.setNumero_ejemplares_ocupados(libroUpdate.getNumero_ejemplares_ocupados());
-			libroService.save(libroUpdate);
+			libroService.save(libro);
 			return new ResponseEntity<>(libro,HttpStatus.OK);
 		}
 		else {

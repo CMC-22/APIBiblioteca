@@ -114,6 +114,8 @@ function validarAutor(elemento) {
 
 // funcion para validar campo de ISBN
 function validarIsbn(elemento) {
+   // Eliminar espacios en blanco al inicio y al final
+   let valor = elemento.value.trim();
   // Verificar si el elemento está definido y tiene un valor
   if (!elemento || !elemento.value) {
     Swal.fire({
@@ -124,19 +126,6 @@ function validarIsbn(elemento) {
     if (elemento) {
       elemento.focus();
     }
-    return false;
-  }
-
-  // Eliminar espacios en blanco al inicio y al final
-  let valor = elemento.value.trim();
-
-  if (valor === '') {
-    Swal.fire({
-      icon: 'error',
-      title: 'Error',
-      text: 'El campo ISBN es obligatorio',
-    });
-    elemento.focus();
     return false;
   }
 

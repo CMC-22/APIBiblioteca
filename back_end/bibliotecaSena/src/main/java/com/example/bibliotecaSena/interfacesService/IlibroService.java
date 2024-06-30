@@ -13,5 +13,8 @@ public interface IlibroService {
 	List<libro>filtroLibro(String filtro);
 	boolean existeTitulo(String titulo);
 	boolean existsByIsbn(String isbn);
+	public List<libro> librosRegistrados();
+	Optional<libro> findById(String id_libro);
+	
 
 }
