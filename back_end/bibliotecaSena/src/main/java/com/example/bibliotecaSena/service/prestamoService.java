@@ -48,15 +48,13 @@ public class prestamoService implements IprestamoService{
 	
 	@Override
 	public List<prestamo>findAll() {
-		List<prestamo> listaPrestamo= (List<prestamo>) data.findAll();
-		return listaPrestamo;
+		return (List<prestamo>)data.findAll();
 	}
 
 	
 	@Override
 	public Optional<prestamo> findOne(String id_prestamo) {
-		Optional<prestamo> prestamo=data.findById(id_prestamo);
-		return prestamo;
+		return data.findById(id_prestamo);
 	}
 	
 	@Override

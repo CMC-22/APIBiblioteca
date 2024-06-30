@@ -18,5 +18,7 @@ public interface Ilibro extends CrudRepository<libro,String> {
 			+ "l.genero LIKE %?1%")
 	
 	List<libro>filtroLibro(String filtro);
+	
+	List<libro>findAll();
 
 }

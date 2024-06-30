@@ -36,14 +36,14 @@ public class prestamoController {
 	private IlibroService libroService;
 	
 	@GetMapping("/usuariosregistrados")
-	public ResponseEntity<Object> usuariosRegistrados() {
-	        List<usuario> listaUsuarios = usuarioService.usuariosRegistrados();
+	public ResponseEntity<List<usuario>> usuariosRegistrados() {
+	        List<usuario> listaUsuarios = usuarioService.findAll();
 	        return new ResponseEntity<>(listaUsuarios, HttpStatus.OK);
 	}
 	
 	@GetMapping("/librosregistrados")
-	public ResponseEntity<Object> librosRegistrados() {
-	        List<libro> listaLibros = libroService.librosRegistrados();
+	public ResponseEntity<List<libro>> librosRegistrados() {
+	        List<libro> listaLibros = libroService.findAll();
 	        return new ResponseEntity<>(listaLibros, HttpStatus.OK);
 	}
 
@@ -51,7 +51,7 @@ public class prestamoController {
 	public ResponseEntity<Object> registrarPrestamo(@RequestBody prestamo prestamo) {
 		try {
 			String idPrestamo = prestamoService.save(prestamo);
-			return new ResponseEntity<>(idPrestamo, HttpStatus.OK);
+			return new ResponseEntity<>(idPrestamo, HttpStatus.CREATED);
 		}catch (Exception e) {
 		return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}

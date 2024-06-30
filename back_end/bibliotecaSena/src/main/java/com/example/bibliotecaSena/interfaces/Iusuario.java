@@ -15,6 +15,8 @@ public interface Iusuario extends CrudRepository<usuario,String>{
 			+ "u.correo LIKE %?1%")
 	
 	List<usuario>filtroUsuario(String filtro);
+	
+	List<usuario>findAll();
 
 
 }
