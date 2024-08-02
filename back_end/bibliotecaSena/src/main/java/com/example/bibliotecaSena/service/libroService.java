@@ -49,7 +49,8 @@ public class libroService implements IlibroService {
 		Optional<libro>libro=data.findById(id_libro);
 		return libro;
 	}
-
+	
+	
 	@Override
 	public int delete(String id_libro) {
 		data.deleteById(id_libro);

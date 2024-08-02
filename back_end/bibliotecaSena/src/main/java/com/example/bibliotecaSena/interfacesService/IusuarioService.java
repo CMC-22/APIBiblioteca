@@ -11,8 +11,8 @@ public interface IusuarioService {
 	public int delete(String id_usuario);
 	List<usuario>filtroUsuario(String filtro);
 	boolean existeNombre(String nombre);
-	Optional<usuario>findById(String id_usuario);
+	public Optional<usuario> findById(String id_usuario);
 	public List<usuario> usuariosRegistrados();
-	
+	public List<usuario> usuariosPrestamos();	
 
 }

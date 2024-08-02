@@ -62,5 +62,16 @@ public class prestamoService implements IprestamoService{
 		data.deleteById(id_prestamo);
 		return 1;
 	}
+	
+	
+	@Override
+	public List<prestamo> findByUsuarioAndEstado(usuario usuario, String estado) {
+		return data.findByUsuarioAndEstado(usuario, estado);
+	}
+	
+	@Override
+	public Optional<prestamo>findById(String id_prestamo) {
+		return data.findById(id_prestamo);
+	}
 
 }

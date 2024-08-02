@@ -25,6 +25,11 @@ public class usuarioService implements IusuarioService {
 	public Optional<usuario>findById(String id_usuario) {
 		return data.findById(id_usuario);
 	}
+	
+	@Override
+	public List<usuario> usuariosPrestamos() {
+		return (List<usuario>)data.findAll();
+	}
 
 	@Override
 	public String save(usuario usuario) {
@@ -34,8 +39,7 @@ public class usuarioService implements IusuarioService {
 
 	@Override
 	public List<usuario> findAll() {
-		List<usuario> listaUsuario= (List<usuario>) data.findAll();
-		return listaUsuario;
+		return data.findAll();
 	}
 
 	@Override
@@ -66,5 +70,7 @@ public class usuarioService implements IusuarioService {
 		}
 		return false;
 	}
+
+
 
 }

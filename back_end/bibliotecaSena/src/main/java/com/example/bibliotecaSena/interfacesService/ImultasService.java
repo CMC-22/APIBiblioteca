@@ -10,5 +10,6 @@ public interface ImultasService {
 	public List<multas>findAll();
 	public Optional<multas>findOne(String id_multas);
 	public int delete(String id_multas);
+	Optional<multas> findById(String id_multas);
 
 }

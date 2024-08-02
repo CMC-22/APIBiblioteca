@@ -90,7 +90,7 @@ public class prestamoController {
 			return new ResponseEntity<>(prestamo,HttpStatus.OK);
 		}
 		else {
-			return new ResponseEntity<>("Error: prestamo no encontrado",HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Error: prestamo no encontrado",HttpStatus.NOT_FOUND);
 		}
 	}
 

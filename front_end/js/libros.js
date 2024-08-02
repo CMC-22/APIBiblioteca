@@ -146,7 +146,6 @@ function validarIsbn(elemento) {
       title: 'Error',
       text: 'El campo ISBN debe contener exactamente 13 números.',
     });
-    elemento.focus();
     return false;
   }
   return true;
@@ -438,7 +437,7 @@ function eliminarLibro(id_libro) {
   }).then((result) => {
     if (result.isConfirmed) {
       $.ajax({
-        url: 'http://localhost:8081/api/v1/libro/eliminarPermanente/' + id_libro,
+        url: 'http://localhost:8081/api/v1/libro/eliminar/' + id_libro,
         type: "DELETE",
         success: function (result) {
           //recarga la lista de  libros despues de eliminar

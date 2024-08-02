@@ -26,6 +26,9 @@ public class libroController {
 
 	@PostMapping("/")
 	public ResponseEntity<Object> save(@RequestBody libro libro) {
+		if (libro.getIsbn().length() != 13) {
+			return new ResponseEntity<>("El Isbn debe tener exactamente 13 digitos numericos", HttpStatus.BAD_REQUEST);
+		}
 		libroService.save(libro);
 		return new ResponseEntity<>(libro, HttpStatus.OK);
 	}
@@ -61,11 +64,12 @@ public class libroController {
 		var libro = libroService.findOne(id);
 		return new ResponseEntity<>(libro, HttpStatus.OK);
 	}
+	
 
-	@DeleteMapping("/eliminarPermanente/{id}")
+	@DeleteMapping("/eliminar/{id}")
 	public ResponseEntity<Object>delete(@PathVariable String id){
-		libroService.delete(id);
-		return new ResponseEntity<>("Registro eliminado", HttpStatus.OK);
+		var libro = libroService.delete(id);
+		return new ResponseEntity<>(libro, HttpStatus.OK);
 	}
 
 	@PutMapping("/{id}")

@@ -115,9 +115,11 @@ function validarEstado(elemento) {
     return true;
 }
 
+
+//Cargar usuarios
 async function cargarUsuarios() {
   try {
-      const response = await fetch('http://localhost:8081/api/v1/usuario');
+      const response = await fetch('http://localhost:8081/api/v1/usuariosprestamo');
       const usuarios = await response.json();
       const usuarioSelect = document.getElementById('usuario-multado');
       usuarios.forEach(usuario => {
@@ -134,7 +136,7 @@ async function cargarUsuarios() {
 async function cargarPrestamos() {
   const usuarioId = document.getElementById('usuario-multado').value;
   try {
-      const response = await fetch(`http://localhost:8081/api/v1/prestamo/usuario/${id_usuario}`);
+      const response = await fetch(`http://localhost:8081/api/v1/multas/usuario/${usuarioId}`);
       const prestamos = await response.json();
       const prestamoSelect = document.getElementById('prestamo-multa');
       prestamoSelect.innerHTML = ''; // Limpiar opciones anteriores
@@ -161,14 +163,48 @@ async function registrarMultas(event) {
         return;
     }
 
-    var multas = {
+    const multas = {
+        usuario: { id_usuario: form['usuario-multado'].value},
         prestamo: { id_prestamo: form['prestamo-multa'].value},
         valor_multa: form['valor-multa'].value,
         fecha_multa: form['fecha-multa'].value,
         estado: form['estado-multa'].value
     };
 
-    $.ajax({
+    try {
+      const response = await fetch('http://localhost:8081/api/v1/multas/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(multas)
+      });
+
+      if (response.ok) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Éxito',
+          text: 'Multa registrada correctamente',
+        });
+        form.reset();
+      }else{
+        const error = await response.json();
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Error al registrar la multa: ' + error.message,
+        });
+      }
+    }catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Error al registrar la multa: ' + error.message,
+      });
+    }
+  }
+
+    /*$.ajax({
         type: 'POST',
         url: 'http://localhost:8081/api/v1/multas/',
         contentType: "application/json",
@@ -189,7 +225,7 @@ async function registrarMultas(event) {
             });
         }
     });
-}
+}*/
 
 
 

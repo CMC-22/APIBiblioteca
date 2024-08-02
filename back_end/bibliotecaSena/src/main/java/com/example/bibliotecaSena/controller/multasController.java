@@ -1,5 +1,8 @@
 package com.example.bibliotecaSena.Controller;
 
+import java.util.List;
+
+import org.apache.el.stream.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.bibliotecaSena.interfacesService.ImultasService;
+import com.example.bibliotecaSena.interfacesService.IprestamoService;
+import com.example.bibliotecaSena.interfacesService.IusuarioService;
 import com.example.bibliotecaSena.models.multas;
+import com.example.bibliotecaSena.models.prestamo;
+import com.example.bibliotecaSena.models.usuario;
 
 
 @RequestMapping("/api/v1/multas")
@@ -24,12 +31,33 @@ public class multasController {
 	@Autowired
 	private ImultasService multasService;
 	
+	/*@Autowired
+	private IusuarioService usuarioService;
+	
+	@Autowired
+	private IprestamoService prestamoService;
+	
+	@GetMapping("/usuariosprestamo")
+    public ResponseEntity<List<usuario>> usuariosPrestamo() {
+        List<usuario> listaUsuarios = usuarioService.findAll();
+        return new ResponseEntity<>(listaUsuarios, HttpStatus.OK);
+    }
 
-	@PostMapping("/")
-	public ResponseEntity<Object> save(@RequestBody multas multas) {
-		multasService.save(multas);
-		return new ResponseEntity<>(multas, HttpStatus.OK);
-	}
+    @GetMapping("/prestamos/usuario/{id_usuario}")
+    public ResponseEntity<List<prestamo>> prestamosPorUsuario(@PathVariable String id_usuario) {
+        Optional<usuario> usuario = usuarioService.findById(id_usuario);
+        if (!usuario.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        List<prestamo> listaPrestamos = prestamoService.findByUsuarioAndEstado(usuario.get(), "activo"); // Suponiendo que "activo" es el estado deseado
+        return new ResponseEntity<>(listaPrestamos, HttpStatus.OK);
+    }*/
+
+    @PostMapping("/")
+    public ResponseEntity<multas> save(@RequestBody multas multas) {
+         multasService.save(multas);
+        return new ResponseEntity<>(multas, HttpStatus.OK);
+    }
 
 	@GetMapping("/")
 	public ResponseEntity<Object>findAll(){

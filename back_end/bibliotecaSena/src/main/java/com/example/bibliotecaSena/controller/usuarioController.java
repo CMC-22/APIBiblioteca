@@ -53,10 +53,10 @@ public class usuarioController {
 		return new ResponseEntity<>(usuario, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/eliminarPermanente/{id}")
+	@DeleteMapping("/eliminar/{id}")
 	public ResponseEntity<Object>delete(@PathVariable String id){
-		usuarioService.delete(id);
-		return new ResponseEntity<>("Registro eliminado", HttpStatus.OK);
+		var usuario = usuarioService.delete(id);
+		return new ResponseEntity<>(usuario,  HttpStatus.OK);
 	}
 
 	@PutMapping("/{id}")
