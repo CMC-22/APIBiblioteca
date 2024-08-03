@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E4E4E4"
+    tools:context=".guardarUsuarioFragment"
+    tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20sp"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/lblPortada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="@string/lbltitulo"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lblNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lblNombre"
+                android:textColor="#000000"
+                android:textSize="17sp" />
+
+            <EditText
+                android:id="@+id/txtNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:textColor="#000000" />
+
+
+            <TextView
+                android:id="@+id/lblDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lblDireccion"
+                android:textColor="#000000"
+                android:textSize="17sp" />
+
+            <EditText
+                android:id="@+id/txtDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/lblCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lblCorreo"
+                android:textColor="#000000" />
+
+            <EditText
+                android:id="@+id/txtCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/lblTipoUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lblTipoUsuario"
+                android:textColor="#000000" />
+
+            <Spinner
+                android:id="@+id/txtTipoUsuario"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+              />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="94dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnGuardar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="#0088ff"
+                    android:text="Guardar"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/btnListaUsuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#0088ff"
+                    android:text="Lista Usuario"
+                    android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+        </LinearLayout>
+</FrameLayout>

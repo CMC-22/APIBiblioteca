@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E4E4E4"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".lista_libro">
+
+        <!-- Search and Navigation Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:gravity="center_vertical">
+
+                <EditText
+                    android:id="@+id/editTextBuscar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+
+                    android:textColorHint="@color/black"
+                    android:inputType="text"
+                    android:hint="Buscar"
+                    android:padding="8dp"
+                    android:backgroundTint="#0088ff"
+                    android:textColor="#000000"
+                    android:textColorLink="#0088ff"/>
+
+
+                <Button
+                    android:id="@+id/buttonLupa"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="8dp"
+                    android:backgroundTint="#0088ff"
+                    android:gravity="center"
+                    app:icon="@drawable/magnifying_glass_backup_svgrepo_com"
+                    app:iconSize="20dp"/> <!-- Tamaño más pequeño -->
+
+                <Button
+                    android:id="@+id/buttoninicio"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="8dp"
+                    android:backgroundTint="#0088ff"
+                    android:gravity="center"
+                    app:icon="@drawable/house_svgrepo_com"
+                    app:iconSize="20dp"/> <!-- Tamaño más pequeño -->
+
+        </LinearLayout>
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/back_svgrepo_com" />
+
+                <TextView
+                    android:id="@+id/lblPortada"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Lista Libros"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"/>
+        </LinearLayout>
+
+        <!-- RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listaLibro"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+</LinearLayout>

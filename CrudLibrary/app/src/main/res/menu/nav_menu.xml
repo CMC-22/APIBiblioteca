@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_inicio"
+            android:icon="@drawable/home_house_ui_svgrepo_com"
+            android:title="Inicio"/>
+        <item
+            android:id="@+id/nav_libros"
+            android:icon="@drawable/book_shelf_svgrepo_com"
+            android:title="Libros"/>
+        <item
+            android:id="@+id/nav_usuarios"
+            android:icon="@drawable/user_circle_o_svgrepo_com"
+            android:title="Usuarios"/>
+        <item
+            android:id="@+id/nav_prestamos"
+            android:icon="@drawable/loan_svgrepo_com"
+            android:title="Prestamos"/>
+        <item
+            android:id="@+id/nav_multas"
+            android:icon="@drawable/money_bag_svgrepo_com"
+            android:title="Multas"/>
+    </group>
+</menu>

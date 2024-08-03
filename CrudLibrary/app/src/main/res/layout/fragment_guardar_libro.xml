@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E4E4E4"
+    android:visibility="visible"
+    tools:context=".guardarLibroFragment"
+    tools:visibility="visible">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20sp"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/lblPortada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/lblPortada"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lblTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lblTitulo"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/txtTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="#000000" />
+
+
+        <TextView
+            android:id="@+id/lblAutor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lblAutor"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/txtAutor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/lblGenero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lblgenero"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/txtGenero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/lblIsbn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lblIsbn"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/txtIsbn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/lblDisponible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lblDisponible"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/txtDisponible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/lblOcupado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lblOcupados"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/txtOcupado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="#000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="94dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnGuardar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#0088ff"
+                android:text="Guardar"
+                android:textColor="#FFFFFF"
+                android:layout_margin="10dp"/>
+            <Button
+                android:id="@+id/btnListaLibro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#0088ff"
+                android:text="Lista Libro"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

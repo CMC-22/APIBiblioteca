@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">CrudLibrary</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="lblTitulo">Titulo</string>
+    <string name="lblAutor">Autor</string>
+    <string name="lblgenero">Genero</string>
+    <string name="lblIsbn">Isbn</string>
+    <string name="lblDisponible">Disponibles</string>
+    <string name="lblOcupados">Ocupados</string>
+    <string name="lblPortada">Registrar Libros</string>
+
+    <string name="edit">Editar</string>
+    <string name="delete">Eliminar</string>
+    <string name="open_nav">Open Navigation Drawer</string>
+    <string name="close_nav">Close Navigation Drawer</string>
+
+    <!--agregar uno por cada texto-->
+
+    <string name="lbltitulo">Registrar Usuarios</string>
+    <string name="lblNombre">Nombre</string>
+    <string name="lblDireccion">Direccion</string>
+    <string name="lblCorreo">Correo Electronico</string>
+    <string name="lblTipoUsuario">Tipo de Usuario</string>
+
+
+</resources>
